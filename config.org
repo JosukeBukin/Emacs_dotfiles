@@ -1,0 +1,218 @@
+#+TITLE: Josuke Bukin config file
+#+AUTHOR: Ilia Ivanov
+#+email: imi200303@gmail.com
+* Задачи
+** DONE Подключить проверку синтаксиса
+   CLOSED: [2021-05-08 Сб 17:19]
+* Подключим пакетный менеджер
+** package.el и MELPA
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-refresh-contents)
+  (package-initialize)
+#+end_src
+** use-package
+#+begin_src emacs-lisp
+  (require 'use-package)
+#+end_src
+* EVIL-MODE(Бинды как в VIM)
+#+begin_src emacs-lisp
+  (use-package evil
+  :ensure t
+  :init
+  (evil-mode))
+  (fset 'evil-visual-update-x-selection 'ignore)
+#+end_src
+* Внешний вид
+** Отключение компонентов GUI
+#+begin_src emacs-lisp
+  (tooltip-mode      -1)
+  (menu-bar-mode     -1)
+  (tool-bar-mode     -1)
+  (scroll-bar-mode   -1)
+  (blink-cursor-mode -1)
+  (setq use-dialog-box     nil) ;; Отключение графических диалогов и окон
+  (setq redisplay-dont-pause t) ;; Лучшая отрисовка буфера
+  (setq ring-bell-function 'ignore) ;; Отключить звуковой сигнал
+#+end_src
+** Шрифты
+#+begin_src emacs-lisp
+  (set-frame-font "Source Code Pro 12" nil t)
+#+end_src
+** Номера строк
+*** Linum plugin(номера строк)
+#+begin_src emacs-lisp
+  (use-package linum
+  :ensure t
+  :init
+  (line-number-mode      t) ;; показывать номер строки в mode-line
+  (global-linum-mode     t) ;; показывать номера строк во всех буферах
+  (column-number-mode    t) ;; показывать номер столбца в mode-line
+  (setq linum-format " %d")) ;; формат нумерации строк
+#+end_src
+*** Linum-relative(номера строк как в Vim)
+#+begin_src emacs-lisp
+  (use-package linum-relative
+  :ensure t
+  :init
+  (linum-relative-mode   t))
+#+end_src
+** Настроим mode-line
+#+begin_src emacs-lisp
+  (setq display-time-24hr-format t) ;; 24-часовой формат в mode-line
+  (display-time-mode             t) ;; показывать время
+  (size-indication-mode          t) ;; размер файла в процентах
+#+end_src
+** Темы DOOM
+#+begin_src emacs-lisp
+  (use-package doom-themes
+  :ensure t
+  :init
+  (setq doom-themes-enable-bold    t
+        doom-themes-enable-italic  t)
+  (load-theme 'doom-tomorrow-night t)
+  (doom-themes-visual-bell-config)) ;; mode-line будет реагировать на ошибки
+  (use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode 1))
+#+end_src
+** Короткие сообщения
+#+begin_src emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+** Подсветка результатов поиска
+#+begin_src emacs-lisp
+  (setq search-highlight        t)
+  (setq query-replace-highlight t)
+#+end_src
+ 
+* Менеджмент файлов
+** Neotree(NERDTree в Vim)
+#+begin_src emacs-lisp
+  (use-package neotree
+  :ensure t
+  :bind ("<f8>" . neotree-toggle))
+  (doom-themes-neotree-config)
+#+end_src
+** Dired
+#+begin_src emacs-lisp
+  (use-package dired
+  :init
+  (setq dired-recursive-deletes 'top)) ;; чтобы можно было удалять непустые директории
+#+end_src
+* Автодополнение
+** AC
+#+begin_src emacs-lisp
+  (auto-complete-mode)
+  (ac-config-default)
+  (use-package org-ac
+  :ensure t
+  :init 
+  (org-ac/config-default))
+#+end_src
+** Company-mode
+#+begin_src emacs-lisp
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+#+end_src
+** IDO
+#+begin_src emacs-lisp
+  (use-package ido
+  :init
+  (ido-mode t)
+  (icomplete-mode t)
+  (ido-everywhere t)
+  (setq ido-virtual-buffers t)
+  (setq ido-enable-flex-matching t))
+#+end_src
+* Проверка синтаксиса
+#+begin_src emacs-lisp
+  (use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+#+end_src
+* Управление
+** Отступы
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode nil) ;; отключить возможность ставить отступы TAB'ом
+  (setq-default tab-width          4) ;; ширина табуляции - 4 пробела
+  (setq-default c-basic-offset     4)
+  (setq-default standart-indent    4) ;; стандартная ширина отступа - 4 пробела
+  (setq-default lisp-body-indent   4) ;; сдвигать Lisp-выражения на 4 пробела
+  (global-set-key (kbd "RET") 'newline-and-indent) ;; при нажатии Enter перевести каретку и сделать отступ
+  (setq lisp-indent-function  'common-lisp-indent-function)
+#+end_src
+** Управление буферами
+#+begin_src emacs-lisp
+   (use-package bs)
+   (use-package ibuffer
+   :bind ("<f2>" . bs-show) ;; запуск buffer-selection кнопкой F2
+   :init
+   (defalias 'list-buffers 'ibuffer)) ;; отдельный список буферов при нажатии C-x C-b
+#+end_src
+** Electric-mode(((скобочки)))
+#+begin_src emacs-lisp
+  (electric-pair-mode    1) ;; автозакрытие скобок
+  (electric-indent-mode -1) ;; отключить индентацию
+  (show-paren-mode       1) ;; подсветка скобок
+#+end_src
+** Общий с системой буфер обмена
+#+begin_src emacs-lisp
+  (setq x-select-enable-clipboard t)
+  (setq interprogram-paste-function 'x-cut-buffer-or-selection-value) 
+#+end_src
+** Бинды
+* Прикольчики
+** Удаление выделенного текста при вводе нового
+#+begin_src emacs-lisp
+  (delete-selection-mode t)
+#+end_src
+** Кодировка
+#+begin_src emacs-lisp
+  (set-language-environment 'UTF-8)
+#+end_src
+
+** Email
+#+begin_src emacs-lisp
+  (setq user-full-name "Ilia Ivanov")
+  (setq user-mail-address "imi200303@gmail.com")
+  (use-package mu4e
+  :init
+  (setq mu4e-maildir (expand-file-name "~/mail"))
+  (setq mu4e-drafts-folder "/[Gmail].Drafts")
+  (setq mu4e-sent-folder "/[Gmail].Sent Mail")
+  (setq mu4e-trash-folder "/[Gmail].Trash")
+  (setq mu4e-sent-messages-behavior 'delete)
+  (setq mu4e-maildir-shortcuts
+        '(("/INBOX"             . ?i)
+          ("/[Gmail].Sent Mail" . ?s)
+          ("/[Gmail].Trash"     . ?t)))
+  (setq mu4e-get-mail-command "offlinemap"))
+  (use-package smtpmail
+  :init
+  (setq message-send-mail-function 'smtpmail-send-it
+        starttls-use-gnutls t
+        smtpmail-starttls-credentials
+        '(("smtp.gmail.com" 587 nil nil))
+        smtpmail-auth-credentials
+        (expand-file-name "~/.authinfo.gpg")
+        smtpmail-default-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-service 587
+        smtpmail-debug-info t))
+#+end_src
+** Org-mode
+#+begin_src emacs-lisp
+  (use-package org
+  :init
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (setq org-log-done t))
+#+end_src
