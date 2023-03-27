@@ -84,9 +84,9 @@
       :ensure t
       :init
       (setq modus-themes-italic-constructs t
-            modus-themes-bold-constructs t
-            modus-themes-mixed-constructs t
-            modus-themes-org-blocks 'gray-background)
+	    modus-themes-bold-constructs t
+	    modus-themes-mixed-constructs t
+	    modus-themes-org-blocks 'gray-background)
       :config
       (load-theme 'modus-operandi)
       :bind
@@ -242,8 +242,6 @@
 ** Company-mode
 #+begin_src emacs-lisp
   (use-package company)
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'go-mode-hook 'irony-mode)
   (add-hook 'objc-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)

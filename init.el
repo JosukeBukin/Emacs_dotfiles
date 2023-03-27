@@ -30,12 +30,17 @@
  '(linum-relative-global-mode t)
  '(objed-cursor-color "#cc6666")
  '(org-agenda-files
-   '("~/Notes/roam-notes/20220930145838-философия.org" "/home/ilia/Notes/org-notes/proga.org" "/home/ilia/Notes/org-notes/samsung.org" "/home/ilia/Notes/org-notes/vuz.org"))
+   '("~/Notes/roam-notes/20220930145838-философия.org" "/home/ilia/Notes/org-notes/proga.org" "/home/ilia/Notes/org-notes/samsung.org" "~/Notes/org-notes/habits.org" "/home/ilia/Notes/org-notes/vuz.org"))
  '(org-directory "~/Notes/org-notes")
  '(org-export-backends '(ascii html icalendar latex md odt))
+ '(org-habit-show-all-today t)
+ '(org-modules
+   '(ol-bbdb ol-bibtex ol-docview ol-doi ol-eww ol-gnus org-habit ol-info ol-irc ol-mhe ol-rmail ol-w3m))
  '(package-selected-packages
    '(nov company-auctex auctex-lua eglot lsp-dart dart-mode which-key reverse-im org-roam clojure-mode beacon dap-mode yaml vterm-toggle cider company go-mode lsp-pyright evil-collection dired counsel-projectile lsp-ui rustic gruvbox-theme vterm fira-code-mode lsp-mode ivy centaur-tabs sublimity-scroll sublimity magit-diff-flycheck magit org-ac company-irony-c-headers company-irony flycheck linum-relative use-package undo-tree neotree evil doom-themes doom-modeline auto-complete))
- '(preview-TeX-style-dir "/home/ilia/.emacs.d/elpa/auctex-13.1.3/latex")
+ '(preview-TeX-style-dir "/home/ilia/.emacs.d/elpa/auctex-13.1.3/latex" t)
+ '(projectile-project-root-files
+   '("dune-project" "pubspec.yaml" "info.rkt" "Cargo.toml" "stack.yaml" "DESCRIPTION" "Eldev" "Cask" "shard.yml" "Gemfile" ".bloop" "deps.edn" "build.boot" "project.clj" "build.sc" "build.sbt" "application.yml" "gradlew" "build.gradle" "pom.xml" "poetry.lock" "Pipfile" "tox.ini" "setup.py" "requirements.txt" "manage.py" "angular.json" "package.json" "gulpfile.js" "Gruntfile.js" "mix.exs" "rebar.config" "composer.json" "CMakeLists.txt" "GNUMakefile" "Makefile" "debian/control" "WORKSPACE" "flake.nix" "default.nix" "meson.build" "SConstruct" "GTAGS" "TAGS" "configure.ac" "configure.in" "cscope.out" ".project" ".cproject"))
  '(safe-local-variable-values '((TeX-command-extra-options . "-shell-escape")))
  '(sublimity-mode nil)
  '(vc-annotate-background "#1d1f21")
