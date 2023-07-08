@@ -348,6 +348,17 @@
              :map org-mode-map
              ("C-M-i" . completion-at-point)
              :map org-roam-dailies-map))
+  (use-package websocket
+      :ensure t
+      :after org-roam)
+  (use-package org-roam-ui
+      :ensure t
+      :after org-roam
+      :config
+      (setq org-roam-ui-sync-theme t
+            org-roam-ui-follow t
+            org-roam-ui-update-on-save t
+            org-roam-ui-open-on-start t))
 #+end_src
 ** "package cl is deprecated"
 #+begin_src emacs-lisp

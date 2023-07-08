@@ -19,7 +19,7 @@
  '(ansi-color-names-vector
    ["#1d1f21" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#c9b4cf" "#8abeb7" "#c5c8c6"])
  '(custom-safe-themes
-   '("4a288765be220b99defaaeb4c915ed783a9916e3e08f33278bf5ff56e49cbc73" "43c808b039893c885bdeec885b4f7572141bd9392da7f0bd8d8346e02b2ec8da" default))
+   '("11873c4fbf465b956889adfa9182495db3bf214d9a70c0f858f07f6cc91cbd47" "4a288765be220b99defaaeb4c915ed783a9916e3e08f33278bf5ff56e49cbc73" "43c808b039893c885bdeec885b4f7572141bd9392da7f0bd8d8346e02b2ec8da" default))
  '(evil-undo-system 'undo-redo)
  '(fci-rule-color "#5c5e5e")
  '(global-linum-mode nil)
@@ -29,15 +29,14 @@
  '(linum-relative-backend 'display-line-numbers-mode)
  '(linum-relative-global-mode t)
  '(objed-cursor-color "#cc6666")
- '(org-agenda-files
-   '("~/Notes/roam-notes/20220930145838-философия.org" "/home/ilia/Notes/org-notes/proga.org" "/home/ilia/Notes/org-notes/samsung.org" "~/Notes/org-notes/habits.org" "/home/ilia/Notes/org-notes/vuz.org"))
+ '(org-agenda-files (list "~/Notes/org-notes" "~/Notes/roam-notes"))
  '(org-directory "~/Notes/org-notes")
  '(org-export-backends '(ascii html icalendar latex md odt))
  '(org-habit-show-all-today t)
  '(org-modules
    '(ol-bbdb ol-bibtex ol-docview ol-doi ol-eww ol-gnus org-habit ol-info ol-irc ol-mhe ol-rmail ol-w3m))
  '(package-selected-packages
-   '(nov company-auctex auctex-lua eglot lsp-dart dart-mode which-key reverse-im org-roam clojure-mode beacon dap-mode yaml vterm-toggle cider company go-mode lsp-pyright evil-collection dired counsel-projectile lsp-ui rustic gruvbox-theme vterm fira-code-mode lsp-mode ivy centaur-tabs sublimity-scroll sublimity magit-diff-flycheck magit org-ac company-irony-c-headers company-irony flycheck linum-relative use-package undo-tree neotree evil doom-themes doom-modeline auto-complete))
+   '(org-roam-ui websocket nov company-auctex auctex-lua eglot lsp-dart dart-mode which-key reverse-im org-roam clojure-mode beacon dap-mode yaml vterm-toggle cider company go-mode lsp-pyright evil-collection dired counsel-projectile lsp-ui rustic gruvbox-theme vterm fira-code-mode lsp-mode ivy centaur-tabs sublimity-scroll sublimity magit-diff-flycheck magit org-ac company-irony-c-headers company-irony flycheck linum-relative use-package undo-tree neotree evil doom-themes doom-modeline auto-complete))
  '(preview-TeX-style-dir "/home/ilia/.emacs.d/elpa/auctex-13.1.3/latex" t)
  '(projectile-project-root-files
    '("dune-project" "pubspec.yaml" "info.rkt" "Cargo.toml" "stack.yaml" "DESCRIPTION" "Eldev" "Cask" "shard.yml" "Gemfile" ".bloop" "deps.edn" "build.boot" "project.clj" "build.sc" "build.sbt" "application.yml" "gradlew" "build.gradle" "pom.xml" "poetry.lock" "Pipfile" "tox.ini" "setup.py" "requirements.txt" "manage.py" "angular.json" "package.json" "gulpfile.js" "Gruntfile.js" "mix.exs" "rebar.config" "composer.json" "CMakeLists.txt" "GNUMakefile" "Makefile" "debian/control" "WORKSPACE" "flake.nix" "default.nix" "meson.build" "SConstruct" "GTAGS" "TAGS" "configure.ac" "configure.in" "cscope.out" ".project" ".cproject"))
