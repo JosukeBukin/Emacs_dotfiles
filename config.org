@@ -1,4 +1,12 @@
 #+TITLE: Josuke Bukin config file
+* Проверка синтаксиса
+#+begin_src emacs-lisp
+  (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode))
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+#+end_src
 * Подключим пакетный менеджер
 #+BEGIN_SRC emacs-lisp
   (setq package-archives
@@ -14,14 +22,6 @@
   (eval-when-compile (require 'use-package))
   (setq use-package-hook-name-suffix nil)
 #+END_SRC
-* Проверка синтаксиса
-#+begin_src emacs-lisp
-  (use-package flycheck
-      :ensure t
-      :init
-      (global-flycheck-mode))
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-#+end_src
 * Внешний вид
 ** Шрифты
 #+begin_src emacs-lisp
@@ -42,7 +42,6 @@
 ** Номера строк
 *** Linum-relative(номера строк как в Vim)
 #+begin_src emacs-lisp
-  (use-package linum)
   (use-package linum-relative
       :ensure t
       :config
